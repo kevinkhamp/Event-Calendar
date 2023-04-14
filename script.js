@@ -5,6 +5,7 @@ var descriptionEl = document.querySelector('.description')
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
 $(function (e) {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -13,9 +14,15 @@ $(function (e) {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
-saveEl.addEventListener("click", function() {
-  var eventEl = descriptionEl.value
-  localStorage.setItem("event", JSON.stringify(eventEl))
+
+saveEl.addEventListener("click", function(e) {
+
+  var scheduleEvents = {
+    event : descriptionEl.value
+  }
+ 
+  console.log(scheduleEvents)
+  localStorage.setItem("event", JSON.stringify(scheduleEvents))
 })
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -28,6 +35,10 @@ saveEl.addEventListener("click", function() {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+  localStorage.getItem("event")
+  var currentText = JSON.parse(localStorage.getItem("event"))
+
+
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(today.format ('dddd MMMM D, YYYY'));
 });
