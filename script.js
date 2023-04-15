@@ -3,7 +3,9 @@ var today = dayjs();
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-$(function () {
+//$( document ).ready() will run the page when everything in JS is ready. Short hand is $(function() {}
+$(document).ready(function () {
+  console.log('Im ready')
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -23,6 +25,8 @@ $(function () {
       // console.log(hour)
       //siblings() takes the elements in the same branch? Family? You know what a parent and child are.
       // var event = $(this).siblings('textarea').val()
+
+      //prev() traverses to the other sibling. The older sibling? Whatever was before it.
       var event = $(this).prev().val()
       // console.log(text)
       localStorage.setItem(hour, JSON.stringify(event))
@@ -72,7 +76,7 @@ else {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  $('#hour-9, .description').val(localStorage.getItem('hour-9'))
+  $('#hour-9, textarea').val(localStorage.getItem('hour-9'))
   $('#hour-10 textarea').val(localStorage.getItem('hour-10'))
   $('#hour-11 textarea').val(localStorage.getItem('hour-11'))
   $('#hour-12 textarea').val(localStorage.getItem('hour-12'))
