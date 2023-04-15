@@ -1,12 +1,12 @@
 var today = dayjs();
-var saveEl = document.querySelector('.saveBtn')
-var descriptionEl = document.querySelector('.description')
-
+var saveEl = document.querySelectorAll('.btn')
+var hourEl = document.querySelectorAll('#hour-9,#hour-10,#hour-11,#hour-12,#hour-1,#hour-2,#hour-3,#hour-4,#hour-5')
+var descriptionEl = document.querySelectorAll('.description')
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-$(function (e) {
+$(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -15,15 +15,16 @@ $(function (e) {
   // useful when saving the description in local storage?
   //
 
-saveEl.addEventListener("click", function(e) {
-
-  var scheduleEvents = {
-    event : descriptionEl.value
+  for (var i = 0; i < saveEl.length; i++) {
+    saveEl[i].addEventListener("click", function() {
+      for (var i = 0; i < hourEl.length; i++) {
+      var text = descriptionEl[i].value
+      console.log(text)
+      localStorage.setItem('plan', JSON.stringify(text))
+    }
+    })
   }
- 
-  console.log(scheduleEvents)
-  localStorage.setItem("event", JSON.stringify(scheduleEvents))
-})
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -35,10 +36,8 @@ saveEl.addEventListener("click", function(e) {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  localStorage.getItem("event")
-  var currentText = JSON.parse(localStorage.getItem("event"))
-
 
   // TODO: Add code to display the current date in the header of the page.
+  var today = dayjs();
   $('#currentDay').text(today.format ('dddd MMMM D, YYYY'));
 });
