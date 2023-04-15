@@ -76,7 +76,7 @@ else {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  $('#hour-9, textarea').val(localStorage.getItem('hour-9'))
+  $('#hour-9 textarea').val(localStorage.getItem('hour-9'))
   $('#hour-10 textarea').val(localStorage.getItem('hour-10'))
   $('#hour-11 textarea').val(localStorage.getItem('hour-11'))
   $('#hour-12 textarea').val(localStorage.getItem('hour-12'))
